@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Admit</title>
+    <style>
+        /* Add custom CSS for image */
+        .hero-image {
+            background-image: url('https://media.istockphoto.com/id/1216618817/photo/aerial-over-the-university-of-north-carolina-in-the-spring.jpg?b=1&s=170667a&w=0&k=20&c=sWHVR-_OjGSSTwvNsfrfyAVT0v_u6HUqPIAc0yR1ys8='); /* Replace 'image.jpg' with the URL or file path of your desired image */
+            background-size: cover;
+            object-fit: cover;
+            height: 75vh; /* Set the height to 50% of the viewport height */
+            margin-bottom: 20px; /* Add margin at the bottom to create spacing */
+        }
+
+        /* Add custom CSS for form */
+        form {
+            margin-top: 20px; /* Add margin at the top to create spacing */
+            text-align: center; /* Align the form in the center */
+            border-radius: 10px; /* Add rounded corners to the form */
+            box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Add a shadow effect to the form */
+            padding: 20px; /* Add padding to the form */
+            background-color: #fff; /* Set the background color of the form to white */
+        }
+
+        /* Add custom CSS for title */
+        .title {
+            font-size: 36px; /* Set the font size for the title */
+            text-align: center; /* Align the title in the center */
+            margin-top: 20px; /* Add margin at the top to create spacing */
+            color: #333; /* Set the title color to a dark shade of gray */
+            font-family: 'Arial Black', sans-serif; /* Add a custom font */
+            text-transform: uppercase; /* Convert the text to uppercase */
+        }
+
+        form label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom:5px;
+            color: #333;
+        }
+
+        form input[type="text"] {
+            display: block;
+            width: 70%;
+            margin: 0 auto; 
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            background-color: #f2f2f2;
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        form input[type="submit"] {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.2em;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0062cc;
+        }
+
+        /* Add custom CSS for output */
+        .output-section {
+            background-color: #020202;
+            border: 1px solid #020202;
+            padding: 20px;
+            margin-top: 20px;
+            color: #fff;
+            text-align: center;
+            width: 100%; /* Set width to 100% */
+            margin-left: auto; /* Center align using margin auto */
+            margin-right: auto; /* Center align using margin auto */
+            box-sizing: border-box; /* Include padding and border in total width */
+        }
+        .output-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .output-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .container {
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        }
+        .output-section li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-image"></div>
+    <h1 class="title">Smart Admit</h1>
+    <div class="container">
+        <form method="POST">
+            <label for="rank">Enter Rank:</label>
+            <input type="text" id="rank" name="rank">
+            <input type="submit" value="Submit">
+        </form>
+        {% if output %}
+        <div class="output-section">
+            <h2>Congratulations!</h2>
+            <p>You've made the cut! You are eligible for:</p>
+            <ul>
+                {% for value in output.values() %}
+                <li>{{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
